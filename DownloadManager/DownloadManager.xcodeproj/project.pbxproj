@@ -83,10 +83,7 @@
 		E0CA567421FA0A5E006D43EE /* DownloadManager */ = {
 			isa = PBXGroup;
 			children = (
-				E0EB2B7B22030C1A0073446B /* Task */,
-				E0EB2B782202F5C70073446B /* Delegate */,
-				E0EB2B772202F5B60073446B /* Item */,
-				E0EB2B762202F5A90073446B /* Manger */,
+				E0EB2B7E220311C00073446B /* Source */,
 				E0CA567521FA0A5E006D43EE /* DownloadManager.h */,
 				E0CA567621FA0A5E006D43EE /* Info.plist */,
 			);
@@ -134,6 +131,17 @@
 				E0EB2B7C22030C2A0073446B /* URLSessionTask+Progress.swift */,
 			);
 			path = Task;
+			sourceTree = "<group>";
+		};
+		E0EB2B7E220311C00073446B /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E0EB2B7B22030C1A0073446B /* Task */,
+				E0EB2B782202F5C70073446B /* Delegate */,
+				E0EB2B772202F5B60073446B /* Item */,
+				E0EB2B762202F5A90073446B /* Manger */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
