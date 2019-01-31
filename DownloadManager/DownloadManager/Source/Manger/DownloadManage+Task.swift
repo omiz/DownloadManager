@@ -22,24 +22,28 @@ extension DownloadManage {
         return retrieveTask(for: item.requestItemRequest)
     }
     
-    public func makeDownloadTask(of item: RequestItem) -> URLSessionTask? {
+    func makeDownloadTask(of item: RequestItem) -> URLSessionTask? {
         
         guard let request = item.requestItemRequest else { return nil }
         
-        let found = retrieveTask(for: item)
+        if let found = retrieveTask(for: item) { return found }
         
-        let task = found ?? session.downloadTask(with: request)
+        let task = session.downloadTask(with: request)
+        
+        tasks.append(task)
         
         return task
     }
     
-    public func makeDataTask(of item: RequestItem) -> URLSessionTask? {
+    func makeDataTask(of item: RequestItem) -> URLSessionTask? {
         
         guard let request = item.requestItemRequest else { return nil }
         
-        let found = retrieveTask(for: item)
+        if let found = retrieveTask(for: item) { return found }
         
-        let task = found ?? session.dataTask(with: request)
+        let task = session.dataTask(with: request)
+        
+        tasks.append(task)
         
         return task
     }
