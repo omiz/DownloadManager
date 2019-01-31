@@ -10,19 +10,19 @@ import Foundation
 
 extension DownloadManage {
     
-    func retrieveTask(for request: URLRequest?) -> URLSessionTask? {
+    public func retrieveTask(for request: URLRequest?) -> URLSessionTask? {
         
         let found = tasks.first { $0.originalRequest == request }
         
         return found
     }
     
-    func retrieveTask(for item: RequestItem) -> URLSessionTask? {
+    public func retrieveTask(for item: RequestItem) -> URLSessionTask? {
         
         return retrieveTask(for: item.requestItemRequest)
     }
     
-    func makeDownloadTask(of item: RequestItem) -> URLSessionTask? {
+    public func makeDownloadTask(of item: RequestItem) -> URLSessionTask? {
         
         guard let request = item.requestItemRequest else { return nil }
         
@@ -33,7 +33,7 @@ extension DownloadManage {
         return task
     }
     
-    func makeDataTask(of item: RequestItem) -> URLSessionTask? {
+    public func makeDataTask(of item: RequestItem) -> URLSessionTask? {
         
         guard let request = item.requestItemRequest else { return nil }
         
@@ -44,7 +44,7 @@ extension DownloadManage {
         return task
     }
     
-    func download(_ item: RequestItem, to url: URL, priority: Float = URLSessionTask.defaultPriority) -> URLSessionTask? {
+    public func download(_ item: RequestItem, to url: URL, priority: Float = URLSessionTask.defaultPriority) -> URLSessionTask? {
         
         var item = item
         
@@ -59,7 +59,7 @@ extension DownloadManage {
         return task
     }
     
-    func download(_ item: RequestItem, priority: Float = URLSessionTask.defaultPriority) -> URLSessionTask? {
+    public func download(_ item: RequestItem, priority: Float = URLSessionTask.defaultPriority) -> URLSessionTask? {
         
         guard let task = makeDataTask(of: item) else { return nil }
         
@@ -70,21 +70,21 @@ extension DownloadManage {
         return task
     }
     
-    func cancel(_ item: RequestItem) {
+    public func cancel(_ item: RequestItem) {
         
         guard let task = retrieveTask(for: item) else { return }
         
         task.cancel()
     }
     
-    func resume(_ item: RequestItem) {
+    public func resume(_ item: RequestItem) {
         
         guard let task = retrieveTask(for: item) else { return }
         
         task.resume()
     }
     
-    func suspend(_ item: RequestItem) {
+    public func suspend(_ item: RequestItem) {
         
         guard let task = retrieveTask(for: item) else { return }
         
